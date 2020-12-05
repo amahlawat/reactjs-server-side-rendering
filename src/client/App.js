@@ -1,15 +1,14 @@
 import React from 'react';
-import Home from './pages/Home';
+import { renderRoutes } from 'react-router-config';
 
-const App = () => {
+const App = ({ route }) => {
     return(
         <div>
-            <Home />
+            {renderRoutes(route.routes)}
         </div>
     )
 }
 
 export default {
-    component: App,
-    
+    component: App
 }

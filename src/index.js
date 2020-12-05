@@ -1,13 +1,13 @@
-import 'babel-polyfill';
-import renderer from './helper/renderer';
-import express from 'express';
+const express = require("express");
+const React = require("react");
+const renderToString = require('react-dom/server').renderToString;
+const Home  = require("./client/pages/HomePage").default;
 
 const app = express();
 
-app.use(express.static("public"));
 app.get("/", (req, res) => {
-//  const promises = 
-  res.send("ssr project");
+  const content = renderToString(<Home />);
+  res.send(content);
 })
 
 app.listen(3000, () => {
