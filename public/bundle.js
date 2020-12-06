@@ -6025,18 +6025,18 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactRouterDom = __webpack_require__(151);
 
+var _HomePage = __webpack_require__(404);
+
+var _HomePage2 = _interopRequireDefault(_HomePage);
+
 var _Routes = __webpack_require__(403);
 
 var _Routes2 = _interopRequireDefault(_Routes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+_reactDom2.default.hydrate(_react2.default.createElement(_HomePage2.default, null), document.querySelector('#root'));
 // import { renderRoutes } from 'react-router-config';
-_reactDom2.default.hydrate(_react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
-    null,
-    _react2.default.createElement(_Routes2.default, null)
-), document.querySelector('#root'));
 
 /***/ }),
 /* 160 */

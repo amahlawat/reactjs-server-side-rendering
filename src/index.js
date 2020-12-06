@@ -11,8 +11,17 @@ import HomePage from './client/pages/HomePage';
 const app = express();
 
 app.use(express.static("public"));
-app.get("*", (req, res) => {
-  res.send(renderToString(<HomePage />));
+app.get("/", (req, res) => {
+  const html = `
+    <html>
+      <head></head>
+      <body>
+        <div id="root">${renderToString(<HomePage />)}</div>
+        <script src="bundle.js"></script>
+      </body>
+    </html>
+  `;
+  res.send(html);
 });
 
 app.listen(3000, () => {
