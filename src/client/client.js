@@ -1,10 +1,13 @@
 import 'babel-polyfill';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { renderRoutes } from 'react-router-config';
+// import { renderRoutes } from 'react-router-config';
+import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
 
 ReactDOM.hydrate(
-        <div>{renderRoutes(Routes)}</div>,
+        <BrowserRouter>
+            <Routes />
+        </BrowserRouter>,
     document.querySelector('#root')
 );
