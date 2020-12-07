@@ -1,7 +1,9 @@
 import express from 'express';
 import React from 'react';
 import { renderToString } from 'react-dom/server';
-import HomePage from './client/pages/HomePage';
+// import HomePage from './client/pages/HomePage';
+import Routes from './client/Routes';
+import renderer from './helpers/renderer';
 // const express = require("express");
 // const React = require("react");
 // const renderToString = require("react-dom/server").renderToString;
@@ -11,17 +13,8 @@ import HomePage from './client/pages/HomePage';
 const app = express();
 
 app.use(express.static("public"));
-app.get("/", (req, res) => {
-  const html = `
-    <html>
-      <head></head>
-      <body>
-        <div id="root">${renderToString(<HomePage />)}</div>
-        <script src="bundle.js"></script>
-      </body>
-    </html>
-  `;
-  res.send(html);
+app.get("*", (req, res) => {
+  res.send(renderer(req));
 });
 
 app.listen(3000, () => {
