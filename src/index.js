@@ -1,20 +1,13 @@
 import express from 'express';
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-// import HomePage from './client/pages/HomePage';
-import Routes from './client/Routes';
 import renderer from './helpers/renderer';
-// const express = require("express");
-// const React = require("react");
-// const renderToString = require("react-dom/server").renderToString;
-// const HomePage = require("./client/pages/HomePage").default;
+import createStore from './helpers/createStore';
 
-// const renderer = require("./helpers/renderer").default;
 const app = express();
 
 app.use(express.static("public"));
 app.get("*", (req, res) => {
-  res.send(renderer(req));
+  const store = createStore(req);
+  res.send(renderer(req, store));
 });
 
 app.listen(3000, () => {
