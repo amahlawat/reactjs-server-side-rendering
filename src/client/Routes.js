@@ -1,5 +1,5 @@
 import HomePage from './pages/HomePage'
-import UsersListPage from './pages/UsersListPage';
+// import UsersListPage from './pages/UsersListPage';
 import NotFoundPage from './pages/NotFoundPage';
 import App from './App';
 
@@ -12,10 +12,10 @@ export default [
                 path: '/',
                 exact: true
             },
-            {
-                ...UsersListPage,
-                path: '/users'
-            },
+            // {
+            //     ...UsersListPage,
+            //     path: '/users'
+            // },
             {
                 ...NotFoundPage
             }

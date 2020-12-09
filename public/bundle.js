@@ -8172,17 +8172,15 @@ var _reducers = __webpack_require__(460);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _axios = __webpack_require__(175);
-
-var _axios2 = _interopRequireDefault(_axios);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var axiosInstance = _axios2.default.create({
-    baseURL: '/api'
-});
+// import axios from 'axios';
 
-var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default.withExtraArgument(axiosInstance)));
+// const axiosInstance = axios.create({
+//     baseURL: '/api'
+// });
+
+var store = (0, _redux.createStore)(_reducers2.default, {}, (0, _redux.applyMiddleware)(_reduxThunk2.default));
 
 _reactDom2.default.hydrate(_react2.default.createElement(
     _reactRedux.Provider,
@@ -36871,14 +36869,12 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+// import UsersListPage from './pages/UsersListPage';
+
 
 var _HomePage = __webpack_require__(441);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
-
-var _UsersListPage = __webpack_require__(442);
-
-var _UsersListPage2 = _interopRequireDefault(_UsersListPage);
 
 var _NotFoundPage = __webpack_require__(443);
 
@@ -36894,9 +36890,12 @@ exports.default = [_extends({}, _App2.default, {
     routes: [_extends({}, _HomePage2.default, {
         path: '/',
         exact: true
-    }), _extends({}, _UsersListPage2.default, {
-        path: '/users'
-    }), _extends({}, _NotFoundPage2.default)]
+    }),
+    // {
+    //     ...UsersListPage,
+    //     path: '/users'
+    // },
+    _extends({}, _NotFoundPage2.default)]
 })];
 
 /***/ }),
@@ -36940,35 +36939,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 442 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _react = __webpack_require__(6);
-
-var _react2 = _interopRequireDefault(_react);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var UsersListPage = function UsersListPage() {
-    return _react2.default.createElement(
-        'div',
-        null,
-        'UsersListPage'
-    );
-};
-
-exports.default = {
-    component: UsersListPage
-};
-
-/***/ }),
+/* 442 */,
 /* 443 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -38180,7 +38151,7 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
                     switch (_context.prev = _context.next) {
                         case 0:
                             _context.next = 2;
-                            return _axios2.default.get('http://react-ssr-api.herokuapp.com');
+                            return _axios2.default.get('http://react-ssr-api.herokuapp.com/users');
 
                         case 2:
                             res = _context.sent;

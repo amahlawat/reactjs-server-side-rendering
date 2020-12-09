@@ -1,11 +1,30 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { fetchUsers } from '../actions';
 
-const UsersListPage = () => (
-    <div>
-        UsersListPage
-    </div>
-)
+class UsersListPage extends React.Component { 
+    componentDidMount(){
+        // this.props.fetchUsers();
+    }
+    
+    renderUsers(){
+        return this.props.users.map(user => {
+            return <li key={user.id}>{user.name}</li>
+        });
+    }
 
-export default {
-    component: UsersListPage
+    render(){
+        return(
+            <div>
+                UsersListPage
+                <ul>{this.renderUsers()}</ul>
+            </div>
+        )
+    }
 }
+
+function mapStateToProps(state){
+    return { users: state.users};
+}
+
+export default connect(mapStateToProps, {fetchUsers})(UsersListPage);
