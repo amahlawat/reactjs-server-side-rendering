@@ -4,7 +4,7 @@ import { fetchUsers } from '../actions';
 
 class UsersListPage extends React.Component { 
     componentDidMount(){
-        // this.props.fetchUsers();
+        this.props.fetchUsers();
     }
     
     renderUsers(){
@@ -17,7 +17,7 @@ class UsersListPage extends React.Component {
         return(
             <div>
                 UsersListPage
-                <ul>{this.renderUsers()}</ul>
+                {this.props.users != undefined && <ul>{this.renderUsers()}</ul>}
             </div>
         )
     }
@@ -27,4 +27,9 @@ function mapStateToProps(state){
     return { users: state.users};
 }
 
-export default connect(mapStateToProps, {fetchUsers})(UsersListPage);
+function loadData(store){
+    return store.dispatch(fetchUsers());
+}
+
+export { loadData };
+export default { component: connect(mapStateToProps, {fetchUsers})(UsersListPage)};
